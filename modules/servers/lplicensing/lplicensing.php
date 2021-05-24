@@ -20,6 +20,7 @@ function lplicensing_ConfigOptions()
     $addonsCollection = WHMCS\Database\Capsule::table("tbladdons")->orderBy("weight", "asc")->orderBy("name", "asc")->get();
     $supportUpdateAddons = array(  );
     $supportUpdateAddons[00] = "None";
+	$supportUpdateAddons[9] = "JetBackup5 Licensing System";
 	$supportUpdateAddons[10] = "LiteSpeed Licensing System";
 	$supportUpdateAddons[11] = "SitePad Licensing System";
 	$supportUpdateAddons[12] = "JetBackUp Licensing System";
@@ -118,8 +119,8 @@ function lplicensing_CreateAccount(array $params)
     }
 	$length = "11";
 	$prefix = "LP-";
-	$prod= array('10','11','12','13','14','15','16','17','18','19','20','21','22');
-	$rep = array('litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
+	$prod= array('9','10','11','12','13','14','15','16','17','18','19','20','21','22');
+	$rep = array('jb5','litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
 	$productname=str_replace($prod,$rep,$params['configoption1']);
     $ch = curl_init();
     $args = http_build_query(['token'=>$GLOBALS['license_token']] + ['month'=> $month,'key'=>$productname,'ip'=>$params['customfields']['IP']]);
@@ -192,8 +193,8 @@ function lplicensing_SuspendAccount($params)
     {
         return "No license exists for this item";
     }
-	$prod= array('10','11','12','13','14','15','16','17','18','19','20','21','22');
-	$rep = array('litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
+	$prod= array('9','10','11','12','13','14','15','16','17','18','19','20','21','22');
+	$rep = array('jb5','litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
     $productname=str_replace($prod,$rep,$params['configoption1']);
     $args = http_build_query(['token'=>$GLOBALS['license_token']] + ['key'=>$productname,'ip'=>$params['customfields']['IP']]);
     $ch = curl_init();
@@ -216,8 +217,8 @@ function lplicensing_UnsuspendAccount($params)
     {
         return "No license exists for this item";
     }
-	$prod= array('10','11','12','13','14','15','16','17','18','19','20','21','22');
-	$rep = array('litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
+	$prod= array('9','10','11','12','13','14','15','16','17','18','19','20','21','22');
+	$rep = array('jb5','litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
     $productname=str_replace($prod,$rep,$params['configoption1']);
     $args = http_build_query(['token'=>$GLOBALS['license_token']] + ['key'=>$productname,'ip'=>$params['customfields']['IP']]);
     $ch = curl_init();
@@ -241,8 +242,8 @@ function lplicensing_TerminateAccount($params)
     {
         return "No license exists for this item";
     }
-	$prod= array('10','11','12','13','14','15','16','17','18','19','20','21','22');
-	$rep = array('litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
+	$prod= array('9','10','11','12','13','14','15','16','17','18','19','20','21','22');
+	$rep = array('jb5','litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
 	$productname=str_replace($prod,$rep,$params['configoption1']);
     $args = http_build_query(['token'=>$GLOBALS['license_token']] + ['key'=>$productname,'ip'=>$params['customfields']['IP']]);
     $ch = curl_init();
@@ -321,8 +322,8 @@ function lplicensing_ReNew($params)
         }
     }
 
-	$prod= array('10','11','12','13','14','15','16','17','18','19','20','21','22');
-	$rep = array('litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
+	$prod= array('9','10','11','12','13','14','15','16','17','18','19','20','21','22');
+	$rep = array('jb5','litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
     $productname=str_replace($prod,$rep,$params['configoption1']);
     $args = http_build_query(['token'=>$GLOBALS['license_token']] + ['month'=>$month,'key'=>$productname,'ip'=>$params['customfields']['IP']]);
     $ch = curl_init();
@@ -416,8 +417,8 @@ function lplicensing_ClientArea($params)
     if($licenseData->validdirectory != ""){
     $validDirectory = $licenseData->validdirectory;
     }else{
-	$prod= array('10','11','12','13','14','15','16','17','18','19','20','21','22');
-	$rep = array('litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
+	$prod= array('9','10','11','12','13','14','15','16','17','18','19','20','21','22');
+	$rep = array('jb5','litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
 	$productname=str_replace($prod,$rep,$params['configoption1']);
     $args = http_build_query(['token'=>$GLOBALS['license_token']]  + ['key'=>$productname,'ip'=>$params['customfields']['IP'] ]);
     $ch = curl_init();
@@ -454,8 +455,8 @@ function lplicensing_ChangeIp($params){
    $license = lplicensing_get_license($params);
    
     if($license->reissues < 3){
-	$prod= array('10','11','12','13','14','15','16','17','18','19','20','21','22');
-	$rep = array('litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
+	$prod= array('9','10','11','12','13','14','15','16','17','18','19','20','21','22');
+	$rep = array('jb5','litespeed','sitepad','jetbackup','dplesk','dcpanel','cpanel','cloudLinux','imunify360','plesk','softaculous','kernelcare','whmreseller','whmsonic');
     $productname=str_replace($prod,$rep,$params['configoption1']);
     if(isset($_POST['IPc'])&&$_POST['IPc']!=""&&$params['customfields']['IP']!=$_POST['IPc']){
     $args = http_build_query(['token'=>$GLOBALS['license_token']] + ['key'=>$productname,'ip'=>$params['customfields']['IP'],'ip_new'=>$_POST['IPc']]);
